@@ -34,6 +34,6 @@ exports.user_check_exists = asyncHandler(async (req, res, next) => {
   } catch(error) {
     return next(error)
   }
-})
+});
     
 

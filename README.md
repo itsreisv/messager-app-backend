@@ -7,9 +7,6 @@ Backend for messager app
 
 // npx nodemon to start
 
-PROBLEMS:
-1. bcrypt is not sumbitting the hashedPassword for some reason, causing
-  validation to fail
 
 NEXT STEP:
 1. Implement user validation after log-in
