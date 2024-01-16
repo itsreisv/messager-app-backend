@@ -19,13 +19,16 @@ exports.user_check_exists = asyncHandler(async (req, res, next) => {
 
   try {
     const existingUser = await User.findOne({ $or: [{ username: userData.username }, {email: userData.email }] });
-
     if (existingUser) {
       res.status(400).json({ error: 'Username or email in use '});
     } else {
-      const newUser = new User(userData);
+      const hashedPassword = await bcrypt.hash(userData.password, 10);
+      const newUser = new User({
+        username: userData.username,
+        password: hashedPassword,
+        email: userData.email,
+      })
       await newUser.save();
-
       res.json({ message: 'User created successfully' });
     }
   } catch(error) {
