@@ -8,8 +8,8 @@ exports.index = asyncHandler(async (req, res, next) => {
 
 //GET all users
 exports.user_create_get = asyncHandler(async (req, res, next) => {
-  const all_users = await User.findOne({});
-  return res.send(all_users)
+  const all_users = await User.find({});
+  return res.json({all_users})
 })
 
 
@@ -35,5 +35,6 @@ exports.user_check_exists = asyncHandler(async (req, res, next) => {
     return next(error)
   }
 });
+
     
 
